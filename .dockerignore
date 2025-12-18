@@ -1,0 +1,13 @@
+# Node
+node_modules
+
+# PHP
+vendor
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Makefile
+makefile
