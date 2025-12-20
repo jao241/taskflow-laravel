@@ -44,9 +44,8 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
 
-        $this->authorize('view', $task);
-
         if ($task) {
+            $this->authorize('view', $task);
 
             return response()->json($task);
         } else {
@@ -96,7 +95,7 @@ class TaskController extends Controller
                 $task->delete();
                 DB::commit();
 
-                return response()->json(["message" => "Task deleted successfully"]);
+                return response()->json(["message" => "Task deleted successfully"], 204);
             } else {
                 DB::commit();
 

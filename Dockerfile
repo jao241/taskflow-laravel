@@ -5,8 +5,11 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     unzip \
     curl \
-    git \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql
+    git
+
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
+
+RUN pecl install xdebug && docker-php-ext-enable xdebug;
 
 WORKDIR /var/www/html
 COPY . .

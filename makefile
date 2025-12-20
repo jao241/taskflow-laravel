@@ -4,7 +4,7 @@ up:
 
 # down -> Stop the Docker containers
 down:
-	docker compose down -v
+	docker compose down
 
 # migrate -> Run database migrations
 migrate:
@@ -21,3 +21,11 @@ refresh:
 # test -> Run the application tests
 test:
 	docker compose exec app php artisan test
+
+# test-coverage -> Run the application tests with coverage report
+test-coverage:
+	docker compose exec app php artisan test --coverage
+
+# test-html-coverage -> Run the application tests with HTML coverage report, the files are in the coverage directory
+test-html-coverage:
+	docker compose exec app php artisan test --coverage-html coverage

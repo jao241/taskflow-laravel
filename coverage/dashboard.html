@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=12.5.0" rel="stylesheet" type="text/css">
+  <link href="_css/billboard.min.css?v=12.5.0" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=12.5.0" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Auth/AuthenticatedSessionController.php.html#11">App\Http\Controllers\Auth\AuthenticatedSessionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/EmailVerificationNotificationController.php.html#10">App\Http\Controllers\Auth\EmailVerificationNotificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/NewPasswordController.php.html#15">App\Http\Controllers\Auth\NewPasswordController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/PasswordResetLinkController.php.html#11">App\Http\Controllers\Auth\PasswordResetLinkController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisteredUserController.php.html#14">App\Http\Controllers\Auth\RegisteredUserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerifyEmailController.php.html#10">App\Http\Controllers\Auth\VerifyEmailController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/EnsureEmailIsVerified.php.html#10">App\Http\Middleware\EnsureEmailIsVerified</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#12">App\Http\Requests\Auth\LoginRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#9">App\Policies\TaskPolicy</a></td><td class="text-right">14%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#10">App\Http\Controllers\Api\TaskController</a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#8">App\Providers\AppServiceProvider</a></td><td class="text-right">75%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#12">App\Http\Requests\Auth\LoginRequest</a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="Http/Middleware/EnsureEmailIsVerified.php.html#10">App\Http\Middleware\EnsureEmailIsVerified</a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#10">App\Http\Controllers\Api\TaskController</a></td><td class="text-right">61.1%</td><td class="text-right">11</td><td class="text-right">18</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerifyEmailController.php.html#10">App\Http\Controllers\Auth\VerifyEmailController</a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/EmailVerificationNotificationController.php.html#10">App\Http\Controllers\Auth\EmailVerificationNotificationController</a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/NewPasswordController.php.html#15">App\Http\Controllers\Auth\NewPasswordController</a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/PasswordResetLinkController.php.html#11">App\Http\Controllers\Auth\PasswordResetLinkController</a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Auth/AuthenticatedSessionController.php.html#16"><abbr title="App\Http\Controllers\Auth\AuthenticatedSessionController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthenticatedSessionController.php.html#28"><abbr title="App\Http\Controllers\Auth\AuthenticatedSessionController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/EmailVerificationNotificationController.php.html#15"><abbr title="App\Http\Controllers\Auth\EmailVerificationNotificationController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/NewPasswordController.php.html#22"><abbr title="App\Http\Controllers\Auth\NewPasswordController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/PasswordResetLinkController.php.html#18"><abbr title="App\Http\Controllers\Auth\PasswordResetLinkController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/RegisteredUserController.php.html#21"><abbr title="App\Http\Controllers\Auth\RegisteredUserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerifyEmailController.php.html#15"><abbr title="App\Http\Controllers\Auth\VerifyEmailController::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/EnsureEmailIsVerified.php.html#17"><abbr title="App\Http\Middleware\EnsureEmailIsVerified::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#17"><abbr title="App\Http\Requests\Auth\LoginRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#27"><abbr title="App\Http\Requests\Auth\LoginRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#40"><abbr title="App\Http\Requests\Auth\LoginRequest::authenticate">authenticate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#60"><abbr title="App\Http\Requests\Auth\LoginRequest::ensureIsNotRateLimited">ensureIsNotRateLimited</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#81"><abbr title="App\Http\Requests\Auth\LoginRequest::throttleKey">throttleKey</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#14"><abbr title="App\Policies\TaskPolicy::viewAny">viewAny</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#30"><abbr title="App\Policies\TaskPolicy::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#38"><abbr title="App\Policies\TaskPolicy::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#46"><abbr title="App\Policies\TaskPolicy::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#54"><abbr title="App\Policies\TaskPolicy::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/TaskPolicy.php.html#62"><abbr title="App\Policies\TaskPolicy::forceDelete">forceDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#60"><abbr title="App\Http\Controllers\Api\TaskController::update">update</abbr></a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#88"><abbr title="App\Http\Controllers\Api\TaskController::destroy">destroy</abbr></a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#24"><abbr title="App\Http\Controllers\Api\TaskController::store">store</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#21"><abbr title="App\Providers\AppServiceProvider::boot">boot</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#43"><abbr title="App\Http\Controllers\Api\TaskController::show">show</abbr></a></td><td class="text-right">80%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Middleware/EnsureEmailIsVerified.php.html#17"><abbr title="App\Http\Middleware\EnsureEmailIsVerified::handle">handle</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/VerifyEmailController.php.html#15"><abbr title="App\Http\Controllers\Auth\VerifyEmailController::__invoke">__invoke</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/EmailVerificationNotificationController.php.html#15"><abbr title="App\Http\Controllers\Auth\EmailVerificationNotificationController::store">store</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/NewPasswordController.php.html#22"><abbr title="App\Http\Controllers\Auth\NewPasswordController::store">store</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/PasswordResetLinkController.php.html#18"><abbr title="App\Http\Controllers\Auth\PasswordResetLinkController::store">store</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#40"><abbr title="App\Http\Requests\Auth\LoginRequest::authenticate">authenticate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Requests/Auth/LoginRequest.php.html#60"><abbr title="App\Http\Requests\Auth\LoginRequest::ensureIsNotRateLimited">ensureIsNotRateLimited</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#60"><abbr title="App\Http\Controllers\Api\TaskController::update">update</abbr></a></td><td class="text-right">54.5%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#88"><abbr title="App\Http\Controllers\Api\TaskController::destroy">destroy</abbr></a></td><td class="text-right">54.5%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#24"><abbr title="App\Http\Controllers\Api\TaskController::store">store</abbr></a></td><td class="text-right">57.1%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Http/Controllers/Api/TaskController.php.html#43"><abbr title="App\Http\Controllers\Api\TaskController::show">show</abbr></a></td><td class="text-right">80.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.0</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.15</a> and <a href="https://phpunit.de/">PHPUnit 12.4.4</a> at Thu Dec 18 17:32:18 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/billboard.pkgd.min.js?v=12.5.0" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[0,2,"Http\/Controllers\/Auth\/AuthenticatedSessionController.php.html#11","App\\Http\\Controllers\\Auth\\AuthenticatedSessionController","6"],[0,2,"Http\/Controllers\/Auth\/EmailVerificationNotificationController.php.html#10","App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController","6"],[0,2,"Http\/Controllers\/Auth\/NewPasswordController.php.html#15","App\\Http\\Controllers\\Auth\\NewPasswordController","6"],[0,2,"Http\/Controllers\/Auth\/PasswordResetLinkController.php.html#11","App\\Http\\Controllers\\Auth\\PasswordResetLinkController","6"],[0,1,"Http\/Controllers\/Auth\/RegisteredUserController.php.html#14","App\\Http\\Controllers\\Auth\\RegisteredUserController","2"],[0,3,"Http\/Controllers\/Auth\/VerifyEmailController.php.html#10","App\\Http\\Controllers\\Auth\\VerifyEmailController","12"],[0,4,"Http\/Middleware\/EnsureEmailIsVerified.php.html#10","App\\Http\\Middleware\\EnsureEmailIsVerified","20"],[0,7,"Http\/Requests\/Auth\/LoginRequest.php.html#12","App\\Http\\Requests\\Auth\\LoginRequest","56"],[14.285714285714285,7,"Policies\/TaskPolicy.php.html#9","App\\Policies\\TaskPolicy","37.86"],[61.111111111111114,11,"Http\/Controllers\/Api\/TaskController.php.html#10","App\\Http\\Controllers\\Api\\TaskController","18.12"],[75,2,"Providers\/AppServiceProvider.php.html#8","App\\Providers\\AppServiceProvider","2.06"],[100,0,"Http\/Controllers\/Controller.php.html#11","App\\Http\\Controllers\\Controller","0"],[100,0,"Models\/Task.php.html#8","App\\Models\\Task","0"],[100,1,"Models\/User.php.html#11","App\\Models\\User","1"]]</script>
+  <script type="application/json" id="complexity_method">[[0,1,"Http\/Controllers\/Auth\/AuthenticatedSessionController.php.html#16","App\\Http\\Controllers\\Auth\\AuthenticatedSessionController::store","2"],[0,1,"Http\/Controllers\/Auth\/AuthenticatedSessionController.php.html#28","App\\Http\\Controllers\\Auth\\AuthenticatedSessionController::destroy","2"],[0,2,"Http\/Controllers\/Auth\/EmailVerificationNotificationController.php.html#15","App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController::store","6"],[0,2,"Http\/Controllers\/Auth\/NewPasswordController.php.html#22","App\\Http\\Controllers\\Auth\\NewPasswordController::store","6"],[0,2,"Http\/Controllers\/Auth\/PasswordResetLinkController.php.html#18","App\\Http\\Controllers\\Auth\\PasswordResetLinkController::store","6"],[0,1,"Http\/Controllers\/Auth\/RegisteredUserController.php.html#21","App\\Http\\Controllers\\Auth\\RegisteredUserController::store","2"],[0,3,"Http\/Controllers\/Auth\/VerifyEmailController.php.html#15","App\\Http\\Controllers\\Auth\\VerifyEmailController::__invoke","12"],[0,4,"Http\/Middleware\/EnsureEmailIsVerified.php.html#17","App\\Http\\Middleware\\EnsureEmailIsVerified::handle","20"],[0,1,"Http\/Requests\/Auth\/LoginRequest.php.html#17","App\\Http\\Requests\\Auth\\LoginRequest::authorize","2"],[0,1,"Http\/Requests\/Auth\/LoginRequest.php.html#27","App\\Http\\Requests\\Auth\\LoginRequest::rules","2"],[0,2,"Http\/Requests\/Auth\/LoginRequest.php.html#40","App\\Http\\Requests\\Auth\\LoginRequest::authenticate","6"],[0,2,"Http\/Requests\/Auth\/LoginRequest.php.html#60","App\\Http\\Requests\\Auth\\LoginRequest::ensureIsNotRateLimited","6"],[0,1,"Http\/Requests\/Auth\/LoginRequest.php.html#81","App\\Http\\Requests\\Auth\\LoginRequest::throttleKey","2"],[0,1,"Policies\/TaskPolicy.php.html#14","App\\Policies\\TaskPolicy::viewAny","2"],[0,1,"Policies\/TaskPolicy.php.html#30","App\\Policies\\TaskPolicy::create","2"],[0,1,"Policies\/TaskPolicy.php.html#38","App\\Policies\\TaskPolicy::update","2"],[0,1,"Policies\/TaskPolicy.php.html#46","App\\Policies\\TaskPolicy::delete","2"],[0,1,"Policies\/TaskPolicy.php.html#54","App\\Policies\\TaskPolicy::restore","2"],[0,1,"Policies\/TaskPolicy.php.html#62","App\\Policies\\TaskPolicy::forceDelete","2"],[54.54545454545454,3,"Http\/Controllers\/Api\/TaskController.php.html#60","App\\Http\\Controllers\\Api\\TaskController::update","3.85"],[54.54545454545454,3,"Http\/Controllers\/Api\/TaskController.php.html#88","App\\Http\\Controllers\\Api\\TaskController::destroy","3.85"],[57.14285714285714,2,"Http\/Controllers\/Api\/TaskController.php.html#24","App\\Http\\Controllers\\Api\\TaskController::store","2.31"],[66.66666666666666,1,"Providers\/AppServiceProvider.php.html#21","App\\Providers\\AppServiceProvider::boot","1.04"],[80,2,"Http\/Controllers\/Api\/TaskController.php.html#43","App\\Http\\Controllers\\Api\\TaskController::show","2.03"],[100,1,"Http\/Controllers\/Api\/TaskController.php.html#15","App\\Http\\Controllers\\Api\\TaskController::index","1"],[100,1,"Models\/User.php.html#42","App\\Models\\User::casts","1"],[100,1,"Policies\/TaskPolicy.php.html#22","App\\Policies\\TaskPolicy::view","1"],[100,1,"Providers\/AppServiceProvider.php.html#13","App\\Providers\\AppServiceProvider::register","1"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [8,0,1,0,0,0,0,1,1,0,0,3])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [19,0,0,0,0,0,3,1,0,1,0,4])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>
