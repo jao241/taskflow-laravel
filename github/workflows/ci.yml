@@ -3,6 +3,7 @@ name: Laravel CI
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   laravel-ci:
