@@ -1,59 +1,106 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    ![CI](https://github.com/SEU_USUARIO/taskflow/actions/workflows/laravel-ci.yml/badge.svg)
+    ![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
+    ![PHP](https://img.shields.io/badge/PHP-8.4-blue)
+    ![Laravel](https://img.shields.io/badge/Laravel-12-red)
+    ![Docker](https://img.shields.io/badge/docker-ready-blue)
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About Taskflow Laravel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Taskflow Laravel is a task assignment API, responsible for coordinating and storing task data.
+It includes token-based authentication using Laravel Sanctum, and provides endpoints to create, list, update, and delete tasks.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The project is covered by automated tests, includes code coverage reports, and provides a Docker-based development environment for consistency and ease of setup.
 
-## Learning Laravel
+## Stack
+<a href="https://laravel.com/">Laravel</a>
+<a href="https://laravel.com/docs/12.x/sanctum">Sanctum</a>
+<a href="https://pestphp.com">Pest</a>
+<a href="https://docker.com">Docker</a>
+<a href="https://github.com/knuckleswtf/scribe">Scribe</a>
+<a href="https://www.postgresql.org/">PostgreSQL</a>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Makefile commands
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Taskflow provides a Makefile with helper commands to simplify common tasks such as:
 
-## Laravel Sponsors
+- Running the application with Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Running migrations and seeders
 
-### Premium Partners
+- Rolling back migrations
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Running tests and generating coverage reports
 
-## Contributing
+If your Docker installation requires elevated permissions, use <b>sudo</b> before the <b>make</b> command.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+makefile command example:
 
-## Code of Conduct
+`make up`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+or
 
-## Security Vulnerabilities
+`sudo make up`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+This command will up the docker compose environment.
 
-## License
+## Running in a local environment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To run the application locally, you need:
+
+- PostgreSQL installed and running
+
+- A database named <b>taskflow</b>
+
+Then run:
+
+`php artisan migrate --seed `
+
+Start the server:
+
+`php artisan serve`
+
+## API Documentation
+
+This project uses Scribe to generate interactive API documentation.
+
+Generate the docs:
+
+`php artisan scribe:generate`
+
+Access the documentation at:
+
+`http://localhost:8000/docs`
+
+## CI implementation
+
+The CI pipeline is implemented using GitHub Actions and is triggered on:
+
+- Pushes to the main branch
+
+- Manual execution via GitHub Actions
+
+The pipeline runs the test suite to ensure application stability and validate readiness for production deployment.
+
+## Architecture Overview
+
+```mermaid
+flowchart TD
+    Client[Client / Frontend]
+    Routes[API Routes]
+    Middleware[Auth Middleware (Sanctum)]
+    Controller[Controller]
+    Policy[Policy]
+    Model[Model / Eloquent]
+    DB[(PostgreSQL)]
+
+    Client --> Routes
+    Routes --> Middleware
+    Middleware --> Controller
+    Controller --> Policy
+    Controller --> Model
+    Model --> DB
