@@ -92,7 +92,7 @@ The pipeline runs the test suite to ensure application stability and validate re
 flowchart TD
     Client[Client / Frontend]
     Routes[API Routes]
-    Middleware[Auth Middleware (Sanctum)]
+    Middleware[Auth Middleware Sanctum]
     Controller[Controller]
     Policy[Policy]
     Model[Model / Eloquent]
