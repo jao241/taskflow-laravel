@@ -1,11 +1,11 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-    ![CI](https://github.com/SEU_USUARIO/taskflow/actions/workflows/laravel-ci.yml/badge.svg)
-    ![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
-    ![PHP](https://img.shields.io/badge/PHP-8.4-blue)
-    ![Laravel](https://img.shields.io/badge/Laravel-12-red)
-    ![Docker](https://img.shields.io/badge/docker-ready-blue)
+    <img src="https://github.com/jao241/taskflow/actions/workflows/laravel-ci.yml/badge.svg" alt="CI">
+    <img src="https://img.shields.io/badge/coverage-23%25-brightgreen" alt="Coverage">
+    <img src="https://img.shields.io/badge/PHP-8.4-blue" alt="PHP">
+    <img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel">
+    <img src="https://img.shields.io/badge/docker-ready-blue" alt="Docker">
 </p>
 
 
