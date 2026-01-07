@@ -11,6 +11,15 @@ class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @authenticated
+     * @response 200 [
+     *  {
+     *  "id": 1,
+     *  "title": "Sample Task",
+     *  "description": "This is a sample task description.",
+     *  "status": "pending",
+     *  }
+     * ]
      */
     public function index()
     {
@@ -20,6 +29,13 @@ class TaskController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @authenticated
+     * @response 200 {
+     *  "id": 1,
+     *  "title": "Sample Task",
+     *  "description": "This is a sample task description.",
+     *  "status": "pending",
+     *  }
      */
     public function store(Request $request)
     {
@@ -39,6 +55,13 @@ class TaskController extends Controller
 
     /**
      * Display the specified resource.
+     * @authenticated
+     * @response 200 {
+     *  "id": 1,
+     *  "title": "Sample Task",
+     *  "description": "This is a sample task description.",
+     *  "status": "pending",
+     *  }
      */
     public function show(string $id)
     {
@@ -55,6 +78,13 @@ class TaskController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @authenticated
+     * @response 200 {
+     *  "id": 1,
+     *  "title": "Sample Task",
+     *  "description": "This is a sample task description.",
+     *  "status": "pending",
+     *  }
      */
     public function update(Request $request, string $id)
     {
@@ -83,6 +113,8 @@ class TaskController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @authenticated
+     * @response 204
      */
     public function destroy(string $id)
     {
