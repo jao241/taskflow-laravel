@@ -56,15 +56,18 @@ it('it fail to find a specific task', function () {
 });
 
 it('create a new task', function () {
-    $task = Task::factory()->make([
+    $task = [
+        'title' => fake()->title(),
+        'description' => fake()->text(),
+        'status' => 'pending',
         'user_id' => $this->user->id
-    ]);
+    ];
 
-    $response = $this->postJson('/api/tasks', $task->toArray());
+    $response = $this->postJson('/api/tasks', $task);
 
     $response
         ->assertCreated()
-        ->assertJsonFragment($task->toArray());
+        ->assertJsonFragment($task);
 });
 
 it('fail to create a task with invalid data', function () {
@@ -98,6 +101,29 @@ it('update a task', function () {
         ->assertJsonFragment($payload);
 });
 
+it('update a task that does not exist', function () {
+    $response = $this->putJson('/api/tasks/1');
+
+    $response->assertNotFound();
+});
+
+it('fail to update a task with invalid data', function () {
+    $task = Task::create([
+        'title' => fake()->title(),
+        'description' => fake()->text(),
+        'status' => 'pending',
+        'user_id' => $this->user->id,
+    ]);
+
+    $failedPayload = [
+        'title' => 2,
+    ];
+
+    $response = $this->putJson('/api/tasks/' . $task->id, $failedPayload);
+
+    $response->assertServerError();
+});
+
 it('delete a task', function () {
     $task = Task::create([
         'title' => fake()->title(),
@@ -109,4 +135,10 @@ it('delete a task', function () {
     $response = $this->deleteJson('/api/tasks/' . $task->id);
 
     $response->assertNoContent();
+});
+
+it('delete a task that does not exist', function () {
+    $response = $this->deleteJson('/api/tasks/1');
+
+    $response->assertNotFound();
 });

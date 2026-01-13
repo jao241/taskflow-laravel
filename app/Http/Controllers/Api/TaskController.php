@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -42,11 +43,18 @@ class TaskController extends Controller
         DB::beginTransaction();
 
         try {
-            $newTask = Task::create($request->all());
+            $validatedData = $request->validate([
+                'title' => 'required|string',
+                'description' => 'nullable|string',
+                'status' => 'required',
+                'user_id' => 'required|exists:users,id',
+            ]);
+
+            $newTask = Task::create($validatedData);
             DB::commit();
 
             return response()->json($newTask, 201);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json(["message" => "Failed to create task", "error" => $e->getMessage()], 500);
@@ -94,7 +102,14 @@ class TaskController extends Controller
             $task = Task::find($id);
 
             if ($task) {
-                $task->update($request->all());
+
+                $validatedData = $request->validate([
+                    'title' => 'sometimes|required|string',
+                    'description' => 'sometimes|nullable|string',
+                    'status' => 'sometimes|required',
+                ]);
+
+                $task->update($validatedData);
                 DB::commit();
 
                 return response()->json($task);
@@ -103,7 +118,7 @@ class TaskController extends Controller
 
                 return response()->json(["message" => "Task not found"], 404);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             return response()->json(["message" => "Failed to update task", "error" => $e->getMessage()], 500);
@@ -120,23 +135,17 @@ class TaskController extends Controller
     {
         DB::beginTransaction();
 
-        try {
-            $task = Task::find($id);
+        $task = Task::find($id);
 
-            if ($task) {
-                $task->delete();
-                DB::commit();
+        if ($task) {
+            $task->delete();
+            DB::commit();
 
-                return response()->json(["message" => "Task deleted successfully"], 204);
-            } else {
-                DB::commit();
+            return response()->json(["message" => "Task deleted successfully"], 204);
+        } else {
+            DB::commit();
 
-                return response()->json(["message" => "Task not found"], 404);
-            }
-        } catch (\Exception $e) {
-            DB::rollBack();
-
-            return response()->json(["message" => "Failed to delete task", "error" => $e->getMessage()], 500);
+            return response()->json(["message" => "Task not found"], 404);
         }
     }
 }
