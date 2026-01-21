@@ -96,6 +96,10 @@ class UserController extends Controller
                 'password' => 'sometimes|required|string|min:8',
             ]);
 
+            if (!!$validatedData["password"]) {
+                $validatedData["password"] = bcrypt($validatedData["password"]);
+            }
+
             $user->update($validatedData);
 
             DB::commit();
