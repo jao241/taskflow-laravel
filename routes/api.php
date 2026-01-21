@@ -16,15 +16,15 @@ Route::get("/", function() {
 Route::group(["prefix" => "tasks", "middleware" => ["auth:sanctum"]], function() {
     Route::get("/", [TaskController::class, "index"]);
     Route::post("/", [TaskController::class, "store"]);
-    Route::get("/{id}", [TaskController::class, "show"]);
-    Route::put("/{id}", [TaskController::class, "update"]);
-    Route::delete("/{id}", [TaskController::class, "destroy"]);
+    Route::get("/{task}", [TaskController::class, "show"]);
+    Route::put("/{task}", [TaskController::class, "update"]);
+    Route::delete("/{task}", [TaskController::class, "destroy"]);
 });
 
 Route::group(["prefix" => "users", "middleware" => ["auth:sanctum"]], function() {
     Route::get("/", [UserController::class, "index"]);
     Route::post("/", [UserController::class, "store"]);
-    Route::get("/{id}", [UserController::class, "show"]);
-    Route::put("/{id}", [UserController::class, "update"]);
-    Route::delete("/{id}", [UserController::class, "destroy"]);
+    Route::get("/{user}", [UserController::class, "show"]);
+    Route::put("/{user}", [UserController::class, "update"]);
+    Route::delete("/{user}", [UserController::class, "destroy"]);
 });

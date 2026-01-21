@@ -71,15 +71,9 @@ class UserController extends Controller
      * "email": "joao@example.com",
      * }
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        $user = User::find($id);
-
-        if ($user) {
-            return response()->json($user);
-        } else {
-            return response()->json(['error' => 'User not found'], 404);
-        }
+        return response()->json($user);
     }
 
     /**
@@ -91,30 +85,22 @@ class UserController extends Controller
      * "email": "joao@example.com",
      * }
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
         DB::beginTransaction();
 
         try {
-            $user = User::find($id);
+            $validatedData = $request->validate([
+                'name' => 'sometimes|required|string',
+                'email' => 'sometimes|required|email|unique:users,email,',
+                'password' => 'sometimes|required|string|min:8',
+            ]);
 
-            if ($user) {
-                $validatedData = $request->validate([
-                    'name' => 'sometimes|required|string',
-                    'email' => 'sometimes|required|email|unique:users,email,',
-                    'password' => 'sometimes|required|string|min:8',
-                ]);
+            $user->update($validatedData);
 
-                $user->update($validatedData);
+            DB::commit();
 
-                DB::commit();
-
-                return response()->json($user);
-            } else {
-                DB::commit();
-
-                return response()->json(['error' => 'User not found'], 404);
-            }
+            return response()->json($user);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -127,24 +113,16 @@ class UserController extends Controller
      * @authenticated
      * @response 204
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         DB::beginTransaction();
 
         try {
-            $user = User::find($id);
+            $user->delete();
 
-            if ($user) {
-                $user->delete();
+            DB::commit();
 
-                DB::commit();
-
-                return response()->json(['message' => 'User deleted successfully'], 204);
-            } else {
-                DB::commit();
-
-                return response()->json(['error' =>  'User not found'], 404);
-            }
+            return response()->json(['message' => 'User deleted successfully'], 204);
         } catch (Exception $e) {
             DB::rollBack();
 

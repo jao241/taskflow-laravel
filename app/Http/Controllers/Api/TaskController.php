@@ -71,17 +71,11 @@ class TaskController extends Controller
      *  "status": "pending",
      *  }
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        $task = Task::find($id);
+        $this->authorize('view', $task);
 
-        if ($task) {
-            $this->authorize('view', $task);
-
-            return response()->json($task);
-        } else {
-            return response()->json(["message" => "Task not found"], 404);
-        }
+        return response()->json($task);
     }
 
     /**
@@ -94,30 +88,21 @@ class TaskController extends Controller
      *  "status": "pending",
      *  }
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
         DB::beginTransaction();
 
         try {
-            $task = Task::find($id);
+            $validatedData = $request->validate([
+                'title' => 'sometimes|required|string',
+                'description' => 'sometimes|nullable|string',
+                'status' => 'sometimes|required',
+            ]);
 
-            if ($task) {
+            $task->update($validatedData);
+            DB::commit();
 
-                $validatedData = $request->validate([
-                    'title' => 'sometimes|required|string',
-                    'description' => 'sometimes|nullable|string',
-                    'status' => 'sometimes|required',
-                ]);
-
-                $task->update($validatedData);
-                DB::commit();
-
-                return response()->json($task);
-            } else {
-                DB::commit();
-
-                return response()->json(["message" => "Task not found"], 404);
-            }
+            return response()->json($task);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -131,21 +116,13 @@ class TaskController extends Controller
      * @authenticated
      * @response 204
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
         DB::beginTransaction();
 
-        $task = Task::find($id);
+        $task->delete();
+        DB::commit();
 
-        if ($task) {
-            $task->delete();
-            DB::commit();
-
-            return response()->json(["message" => "Task deleted successfully"], 204);
-        } else {
-            DB::commit();
-
-            return response()->json(["message" => "Task not found"], 404);
-        }
+        return response()->json(["message" => "Task deleted successfully"], 204);
     }
 }
