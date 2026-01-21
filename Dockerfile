@@ -23,6 +23,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # ✅ Copia TODO o projeto primeiro
 COPY . .
 
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
 # ✅ Agora o artisan existe
 RUN composer install --no-interaction --prefer-dist
 
