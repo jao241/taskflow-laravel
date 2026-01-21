@@ -1,21 +1,29 @@
 FROM php:8.4-fpm
 
+WORKDIR /var/www/html
+
+# Dependências do sistema
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
     unzip \
+    git \
     curl \
-    git
+    && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
+# Extensões PHP
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql zip
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug;
+# Xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
-WORKDIR /var/www/html
+# Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# ✅ Copia TODO o projeto primeiro
 COPY . .
 
-RUN apt-get update && apt-get install -y unzip
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install
+# ✅ Agora o artisan existe
+RUN composer install --no-interaction --prefer-dist
 
 CMD ["php-fpm"]
