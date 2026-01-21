@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Task\StoreTaskRequest;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use Exception;
@@ -38,7 +39,7 @@ class TaskController extends Controller
      *  "status": "pending",
      *  }
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
         DB::beginTransaction();
 
@@ -73,8 +74,6 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $this->authorize('view', $task);
-
         return response()->json($task);
     }
 
