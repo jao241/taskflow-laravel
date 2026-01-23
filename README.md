@@ -12,7 +12,11 @@
 ## About Taskflow Laravel
 
 Taskflow Laravel is a task assignment API, responsible for coordinating and storing task data.
-It includes token-based authentication using Laravel Sanctum, and provides endpoints to create, list, update, and delete tasks.
+It includes: 
+- A token-based authentication using Laravel Sanctum;
+- Endpoints to CRUD tasks;
+- Endpoints to CRUD users;
+- Login route using email and password (use the seed user credentials for first access: email->dev@email.com, password->password)
 
 The project is covered by automated tests, includes code coverage reports, and provides a Docker-based development environment for consistency and ease of setup.
 
@@ -23,6 +27,7 @@ The project is covered by automated tests, includes code coverage reports, and p
 <a href="https://docker.com">Docker</a>
 <a href="https://github.com/knuckleswtf/scribe">Scribe</a>
 <a href="https://www.postgresql.org/">PostgreSQL</a>
+<a href="https://nginx.org/">Nginx</a>
 
 ## Makefile commands
 
@@ -38,7 +43,7 @@ Taskflow provides a Makefile with helper commands to simplify common tasks such 
 
 If your Docker installation requires elevated permissions, use <b>sudo</b> before the <b>make</b> command.
 
-makefile command example:
+Makefile command example:
 
 `make up`
 
