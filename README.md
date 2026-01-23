@@ -2,21 +2,24 @@
 
 <p align="center">
     <img src="https://github.com/jao241/taskflow-laravel/actions/workflows/ci.yml/badge.svg" alt="CI">
+    <img src="https://img.shields.io/badge/API%20Docs-Scribe-blueviolet" alt="API Docs - Scribe">
     <img src="https://img.shields.io/badge/coverage-41%25-brightgreen" alt="Coverage">
     <img src="https://img.shields.io/badge/PHP-8.4-blue" alt="PHP">
     <img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel">
     <img src="https://img.shields.io/badge/docker-ready-blue" alt="Docker">
 </p>
 
-
 ## About Taskflow Laravel
 
-Taskflow Laravel is a task assignment API, responsible for coordinating and storing task data.
+Taskflow Laravel is a task assignment API designed to coordinate and store task-related data.
+
 It includes: 
 - A token-based authentication using Laravel Sanctum;
-- Endpoints to CRUD tasks;
-- Endpoints to CRUD users;
+- Endpoints to manage tasks (CRUD);
+- Endpoints to manage users (CRUD);
 - Login route using email and password (use the seed user credentials for first access: email->dev@email.com, password->password)
+- Feature tests covering the main modules;
+- API documentation generated with Scribe;
 
 The project is covered by automated tests, includes code coverage reports, and provides a Docker-based development environment for consistency and ease of setup.
 
@@ -51,7 +54,7 @@ or
 
 `sudo make up`
 
-This command will up the docker compose environment.
+This command will start the Docker Compose environment.
 
 ## Running in a local environment
 
@@ -109,3 +112,17 @@ flowchart TD
     Controller --> Policy
     Controller --> Model
     Model --> DB
+```
+
+## Future Improvements
+
+The following features are planned for future iterations of the API:
+
+- [ ] Create an organization module to support multi-tenant usage.
+- [ ] Extend the tasks table with additional fields, such as `responsible_user(s)` and `observations`.
+- [ ] Extend the users table with additional fields, such as `profile_image`, contact information, and access type.
+- [ ] Create enums to manage available task statuses.
+- [ ] Create enums to manage user access types and roles.
+- [ ] Implement a password reset flow using email notifications.
+- [ ] Implement file uploads using AWS services (e.g. S3).
+- [ ] Add user registration and authentication via third-party providers (e.g. Google, Microsoft).
