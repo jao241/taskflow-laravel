@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\StoreTaskRequest;
+use App\Http\Requests\Task\UpdateTaskRequest;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use Exception;
@@ -41,17 +42,12 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+        $data = $request->validated();
+
         DB::beginTransaction();
 
         try {
-            $validatedData = $request->validate([
-                'title' => 'required|string',
-                'description' => 'nullable|string',
-                'status' => 'required',
-                'user_id' => 'required|exists:users,id',
-            ]);
-
-            $newTask = Task::create($validatedData);
+            $newTask = Task::create($data);
             DB::commit();
 
             return response()->json($newTask, 201);
@@ -87,18 +83,14 @@ class TaskController extends Controller
      *  "status": "pending",
      *  }
      */
-    public function update(Request $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $task)
     {
+        $data = $request->validated();
+
         DB::beginTransaction();
 
         try {
-            $validatedData = $request->validate([
-                'title' => 'sometimes|required|string',
-                'description' => 'sometimes|nullable|string',
-                'status' => 'sometimes|required',
-            ]);
-
-            $task->update($validatedData);
+            $task->update($data);
             DB::commit();
 
             return response()->json($task);

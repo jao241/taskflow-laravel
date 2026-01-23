@@ -79,7 +79,7 @@ it('fail to create a task with invalid data', function () {
 
     $response = $this->postJson('/api/tasks', $payload);
 
-    $response->assertServerError();
+    $response->assertUnprocessable();
 });
 
 it('update a task', function () {
@@ -121,7 +121,7 @@ it('fail to update a task with invalid data', function () {
 
     $response = $this->putJson('/api/tasks/' . $task->id, $failedPayload);
 
-    $response->assertServerError();
+    $response->assertUnprocessable();
 });
 
 it('delete a task', function () {
