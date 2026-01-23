@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\StoreTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
-use Illuminate\Http\Request;
 use App\Models\Task;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -33,12 +32,44 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      * @authenticated
+     *
      * @response 200 {
      *  "id": 1,
      *  "title": "Sample Task",
      *  "description": "This is a sample task description.",
      *  "status": "pending",
      *  }
+     *
+     * @response 500 {
+     *  "message": "Failed to create task",
+     * }
+     *
+     * @response 422 {
+     *	"message": "The title field is required.",
+     *	"errors": {
+     *		"title": [
+     *			"The title field is required."
+     *		],
+     *	}
+     * }
+     *
+     * @response 422 {
+     *	"message": "The status field is required.",
+     *	"errors": {
+     *		"status": [
+     *			"The status field is required."
+     *		],
+     *	}
+     * }
+     *
+     * @response 422 {
+     *	"message": "The user_id field is required.",
+     *	"errors": {
+     *		"user_id": [
+     *			"The user_id field is required."
+     *		],
+     *	}
+     * }
      */
     public function store(StoreTaskRequest $request)
     {
@@ -82,6 +113,10 @@ class TaskController extends Controller
      *  "description": "This is a sample task description.",
      *  "status": "pending",
      *  }
+     *
+     * @response 500 {
+     *  "message": "Failed to create task",
+     * }
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
@@ -99,13 +134,14 @@ class TaskController extends Controller
 
             return response()->json(["message" => "Failed to update task", "error" => $e->getMessage()], 500);
         }
-
     }
 
     /**
      * Remove the specified resource from storage.
      * @authenticated
-     * @response 204
+     * @response 204 {
+     *  "message": "Task deleted successfully",
+     * }
      */
     public function destroy(Task $task)
     {

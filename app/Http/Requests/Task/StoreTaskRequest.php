@@ -4,6 +4,9 @@ namespace App\Http\Requests\Task;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @bodyParam user_id string required ID do usuário. Example: 1
+ */
 class StoreTaskRequest extends FormRequest
 {
     /**
@@ -24,7 +27,7 @@ class StoreTaskRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'description' => ['nullable', 'string'],
-            'status' => ['required'],
+            'status' => ['required', 'string'],
             'user_id' => ['required', 'exists:users,id']
         ];
     }
