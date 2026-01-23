@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +37,49 @@ class UserController extends Controller
      * "id": 1,
      * "name: "João",
      * "email": "joao@example.com",
+     * }
+     *
+     * * @response 500 {
+     *  "message": "Failed to create user",
+     * }
+     *
+     * @response 422 {
+     *	"message": "The name field is required.",
+     *	"errors": {
+     *		"name": [
+     *			"The name field is required."
+     *		],
+     *		"email": [
+     *			"The email has already been taken."
+     *		]
+     *	}
+     * }
+     *
+     * @response 422 {
+     *	"message": "The email field is required.",
+     *	"errors": {
+     *		"email": [
+     *			"The email field is required."
+     *		]
+     *	}
+     * }
+     *
+     * @response 422 {
+     *	"message": "The password field is required.",
+     *	"errors": {
+     *		"password": [
+     *			"The password field is required."
+     *		]
+     *	}
+     * }
+     *
+     * @response 422 {
+     *	"message": "The email has already been taken.",
+     *	"errors": {
+     *		"email": [
+     *			"The email has already been taken."
+     *		]
+     *	}
      * }
      */
     public function store(StoreUserRequest $request)
