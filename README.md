@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="https://github.com/jao241/taskflow-laravel/actions/workflows/ci.yml/badge.svg" alt="CI">
-    <img src="https://img.shields.io/badge/coverage-23%25-brightgreen" alt="Coverage">
+    <img src="https://img.shields.io/badge/coverage-41%25-brightgreen" alt="Coverage">
     <img src="https://img.shields.io/badge/PHP-8.4-blue" alt="PHP">
     <img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel">
     <img src="https://img.shields.io/badge/docker-ready-blue" alt="Docker">
