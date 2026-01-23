@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @bodyParam email string required Email do usuário. Example: dev@email.com
+ * @bodyParam password string required Senha do usuário. Example: password
+ */
 class LoginRequest extends FormRequest
 {
     /**

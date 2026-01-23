@@ -11,6 +11,24 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+    /**
+     * Return the access token.
+     * @unauthenticated
+     *
+     * @response 200 [
+     *  {
+     *  message: "x | token"
+     *  }
+     * ]
+     *
+     * * @response 404 {
+     *  "message": "User not found"
+     * }
+     *
+     * * @response 401 {
+     *  "message": "Invalid credentials"
+     * }
+     */
     public function login(LoginRequest $request) {
         $data = $request->validated();
 
