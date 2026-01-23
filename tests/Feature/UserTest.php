@@ -62,11 +62,11 @@ it('fail to create a user with invalid data', function () {
 
     $response = $this->postJson('api/users', $user);
 
-    $response->assertServerError();
+    $response->assertUnprocessable();
 });
 
 it('update an user', function () {
-    $user = User::factory()->create();
+    $user = User::first();
 
     $updatedData = [
         'name' => fake()->name(),

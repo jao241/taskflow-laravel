@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
@@ -38,20 +40,16 @@ class UserController extends Controller
      * "email": "joao@example.com",
      * }
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
+        $data = $request->validated();
+
         DB::beginTransaction();
 
         try {
-            $validatedData = $request->validate([
-                'name' => 'required|string',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|string|min:8'
-            ]);
+            $data['remember_token'] = Str::random(10);
 
-            $validatedData['remember_token'] = Str::random(10);
-
-            $user = User::create($validatedData);
+            $user = User::create($data);
 
             DB::commit();
             return response()->json($user, 201);
@@ -85,24 +83,20 @@ class UserController extends Controller
      * "email": "joao@example.com",
      * }
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
+        $data = $request->validated();
+
         $this->authorize('update', $user);
 
         DB::beginTransaction();
 
         try {
-            $validatedData = $request->validate([
-                'name' => 'sometimes|required|string',
-                'email' => 'sometimes|required|email|unique:users,email,',
-                'password' => 'sometimes|required|string|min:8',
-            ]);
-
-            if (!!$validatedData["password"]) {
-                $validatedData["password"] = bcrypt($validatedData["password"]);
+            if (isset($data["password"])) {
+                $data["password"] = bcrypt($data["password"]);
             }
 
-            $user->update($validatedData);
+            $user->update($data);
 
             DB::commit();
 
