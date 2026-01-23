@@ -26,6 +26,11 @@ COPY . .
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
+COPY docker/entrypoints/file_write_permission.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 # ✅ Agora o artisan existe
 RUN composer install --no-interaction --prefer-dist
 
